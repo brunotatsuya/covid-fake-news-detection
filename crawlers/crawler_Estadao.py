@@ -6,10 +6,9 @@ Description: Crawler to get news from Estadao
 """
 
 from bs4 import BeautifulSoup
-from datetime import datetime, timedelta
+from datetime import datetime
 from pymongo import MongoClient
 from requests import get
-from urllib.parse import unquote
 from crawlers_common import NestedLoopBreaker
 from crawlers_common import get_between
 from crawlers_common import mongo_collection

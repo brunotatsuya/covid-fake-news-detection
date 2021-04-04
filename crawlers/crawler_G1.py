@@ -76,6 +76,7 @@ def scrap_news_G1(html):
             link = unquote(link)
             # Get and treat news date
             date_string = nc.find('div', {'class': 'widget--info__meta'}).text
+            date = datetime.now()
             if "há" in date_string:
                 int_value = int(get_between(date_string, ' ', ' '))
                 if "hora" in date_string:
@@ -100,7 +101,7 @@ if __name__ == '__main__':
         MAX_DATETIME = datetime(1900,1,1,0,0,0)
 
     # Initializing datetime for querying 
-    start_datetime = datetime.now()
+    start_datetime = datetime(2021,1,7)
     query_date = datetime(start_datetime.year, start_datetime.month, start_datetime.day)
     query_date_str = query_date.strftime("%Y-%m-%d")
 
