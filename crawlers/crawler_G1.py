@@ -34,8 +34,8 @@ def get_html_news_G1(subject, date_from, time_from, date_to, time_to, page):
         string: HTML of G1 news query page | 'Failed to get HTML' if fails
     """
 
-    uri = ENDPOINT                                          # set endpoint
-    uri += '?q=' + subject                                  # set query subject
+    uri = ENDPOINT                                           # set endpoint
+    uri += '?q=' + subject                                   # set query subject
     uri += '&page=' + str(page)                              # set query page
     uri += '&order=' + ORDER                                 # set sorting rule
     uri += '&species=' + SPECIES                             # set query content type
@@ -57,7 +57,7 @@ def scrap_news_G1(html):
         html (string): Open HTML of G1 news query page
 
     Returns:
-        list of dictionary: Structured data of news scrapsed of HTML
+        list of dictionary: Structured data of news scraped of HTML
     """
 
     news = []
@@ -87,7 +87,6 @@ def scrap_news_G1(html):
             # Construct object
             news_data = {'title': title, 'link': link, 'datetime': date}
             news.append(news_data)
-
     return news
 
 if __name__ == '__main__':
@@ -120,8 +119,7 @@ if __name__ == '__main__':
                         raise NestedLoopBreaker()
                     inserted_id = insert_raw_collection(news, G1_COLLECTION)
                     print('Inserted object ' + inserted_id + ', dated on ' + 
-                    news['datetime'].strftime("%Y-%m-%d") + 
-                    'into raw_G1 collection')
+                    news['datetime'].strftime("%Y-%m-%d") + ' into raw_G1 collection')
             # Previous day
             query_date = query_date - timedelta(days=1)
             query_date_str = query_date.strftime("%Y-%m-%d")
