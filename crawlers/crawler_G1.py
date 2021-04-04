@@ -80,9 +80,9 @@ def scrap_news_G1(html):
             if "há" in date_string:
                 int_value = int(get_between(date_string, ' ', ' '))
                 if "hora" in date_string:
-                    date = datetime.now() - timedelta(hours=int_value)
+                    date = date - timedelta(hours=int_value)
                 if "dia" in date_string:
-                    date = datetime.now() - timedelta(days=int_value)
+                    date = date - timedelta(days=int_value)
             else:
                 date = datetime.strptime(date_string, '%d/%m/%Y %Hh%M')
             # Construct object
