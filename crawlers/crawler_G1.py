@@ -101,8 +101,7 @@ if __name__ == '__main__':
         MAX_DATETIME = datetime(1900,1,1,0,0,0)
 
     # Initializing datetime for querying 
-    start_datetime = datetime(2021,1,7)
-    query_date = datetime(start_datetime.year, start_datetime.month, start_datetime.day)
+    query_date = datetime.now()
     query_date_str = query_date.strftime("%Y-%m-%d")
 
     # Processing logic

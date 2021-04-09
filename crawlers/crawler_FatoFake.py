@@ -59,17 +59,20 @@ def scrap_fake_news_FatoFake(html):
             # Get and treat fake_news date
             date_string = nc.find('span', {'class': 'feed-post-datetime'}).text
             date = datetime.now()
-            int_value = int(get_between(date_string, ' ', ' '))
-            if "hora" in date_string:
-                date = date - timedelta(hours=int_value)
-            if "dia" in date_string:
-                date = date - timedelta(days=int_value)
-            if "semana" in date_string:
-                date = date - timedelta(weeks=int_value)
-            if ("mes" in date_string) or ("mês" in date_string):
-                date = date - timedelta(days=int_value*30)
-            if "ano" in date_string:
-                date = date - timedelta(days=int_value*365)
+            if date_string == 'Ontem':
+                date = date - timedelta(days=1)
+            else:
+                int_value = int(get_between(date_string, ' ', ' '))
+                if "hora" in date_string:
+                    date = date - timedelta(hours=int_value)
+                if "dia" in date_string:
+                    date = date - timedelta(days=int_value)
+                if "semana" in date_string:
+                    date = date - timedelta(weeks=int_value)
+                if ("mes" in date_string) or ("mês" in date_string):
+                    date = date - timedelta(days=int_value*30)
+                if "ano" in date_string:
+                    date = date - timedelta(days=int_value*365)
             # Construct object
             fake_news_data = {'title': title, 'link': link, 'datetime': date}
             fake_news.append(fake_news_data)
