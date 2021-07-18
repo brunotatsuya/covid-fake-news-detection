@@ -10,7 +10,7 @@ import os
 from pymongo import MongoClient
 
 def load_dataset(dataset, name_dataset, title_str, label_str):
-    """Inserts all registries of loaded dataset to MongoDB Collection
+    """Inserts all registries of loaded dataset into MongoDB Collection
   
     Args:
         dataset (pandas.core.frame.DataFrame): Dataset to load
